@@ -25,14 +25,14 @@ int main(int argc, char const *argv[])
         printf("USAGE: <file-name> <counter-value>\n");
         return -1;
     }
-
+    
     if(*argv[1] < 1) 
     {
         printf("invalid counter value!\n");
         return -1;
     }
 
-    if(signal(999, my_sig_int) == SIG_ERR) 
+    if(signal(SIGINT, my_sig_int) == SIG_ERR) 
     {
         perror("signal");
         return -1;

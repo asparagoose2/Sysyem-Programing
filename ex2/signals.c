@@ -20,23 +20,29 @@ void my_sig_int(int sig_number) {
 
 int main(int argc, char const *argv[])
 {
-    if(argc != 2) {
+    if(argc != 2) 
+    {
         printf("USAGE: <file-name> <counter-value>\n");
         return -1;
     }
-    if(*argv[1] < 1) {
+
+    if(*argv[1] < 1) 
+    {
         printf("invalid counter value!\n");
         return -1;
     }
 
-    if(signal(SIGINT, my_sig_int) < 0) {
+    if(signal(999, my_sig_int) == SIG_ERR) 
+    {
         perror("signal");
         return -1;
     }
     counterLIMIT = strtol(argv[1],&p,10);
 
-    while(1) {
-        if(flag) {
+    while(1) 
+    {
+        if(flag) 
+        {
             printf("\nYou won't kill me! attempt #%d\n", counter);
             flag = 0;
         }

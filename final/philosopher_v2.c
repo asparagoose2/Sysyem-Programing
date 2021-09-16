@@ -69,26 +69,9 @@ int main(int argc, const char *argv[])
         }
     }
 
-
-    // There is an infinite loop so the folowing lines of code will never be executed!
-
-    // joining all off the threads 
-    for (int i = 0; i < num_of_phllosophers; i++)
-        pthread_join(phllosophers[i], NULL);
-
-    // Destroy thread
-    for (int i = 0; i < num_of_phllosophers; i++)
-    {
-        if (pthread_mutex_destroy(&forks[i]))
-        {
-            perror("pthread_mutex_destroy");
-            exit(1);
-        }
-    }
-
-    // Free memory
-    free(phllosophers);
-    free(forks);
+    /*
+        Infinite loop so there is no need to thread join / destroy / free memory
+    */
     
     return 0;
 }

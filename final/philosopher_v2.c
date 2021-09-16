@@ -22,9 +22,9 @@ int main(int argc, const char *argv[])
     }
     char *ptr;
     num_of_phllosophers = (int)strtol(argv[1], &ptr, 10);
-    if (num_of_phllosophers < 1)
+    if (num_of_phllosophers < 2)
     {
-        fprintf(stderr, "Number of philosophers should be greather than 1\n");
+        fprintf(stderr, "Number of philosophers should be greather than 2\n");
         exit(1);
     }
 
@@ -123,7 +123,7 @@ void *philosofer_logic(void *_id)
         r = (rand() % 10) + 1;
         printf("%d: Starting to eat for %d seconds\n", id, r);
         sleep(r);
-        printf("%d: Done eatting\n", id);
+        printf("%d: Done eatting for %d seconds\n", id, r);
         // Done eating release forks and go to sleep for random number of seconds (10-20)
         if(pthread_mutex_unlock(&forks[id - 1]))
         {
@@ -138,6 +138,6 @@ void *philosofer_logic(void *_id)
         r = (rand() % 11) + 10;
         printf("%d: Start thinking for %d seconds\n", id, r);
         sleep(r);
-        printf("%d: Done thinking\n", id);
+        printf("%d: Done thinking for %d seconds\n", id, r);
     }
 }
